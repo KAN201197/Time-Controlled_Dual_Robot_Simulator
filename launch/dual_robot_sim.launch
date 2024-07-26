@@ -1,0 +1,32 @@
+<launch>
+    <!-- First turtlesim node -->
+    <group ns="turtle1">
+        <node name="turtlesim1" pkg="turtlesim" type="turtlesim_node" output="screen">
+            <param name="background_r" value="255"/>
+            <param name="background_g" value="255"/>
+            <param name="background_b" value="255"/>
+            <param name="pose/x" value="1"/>
+            <param name="pose/y" value="1"/>
+            <remap from="/cmd_vel" to="cmd_vel"/>
+            <remap from="/color_sensor" to="color_sensor"/>
+            <remap from="/pose" to="pose"/>
+        </node>
+    </group>
+
+    <!-- Second turtlesim node -->
+    <group ns="turtle2">
+        <node name="turtlesim2" pkg="turtlesim" type="turtlesim_node" output="screen">
+            <param name="background_r" value="255"/>
+            <param name="background_g" value="255"/>
+            <param name="background_b" value="255"/>
+            <param name="pose/x" value="8"/>
+            <param name="pose/y" value="8"/>
+            <remap from="/cmd_vel" to="cmd_vel"/>
+            <remap from="/color_sensor" to="color_sensor"/>
+            <remap from="/pose" to="pose"/>
+        </node>
+    </group>
+
+    <!-- Dual robot simulator node -->
+    <node name="dual_robot_sim" pkg="dual_robot_simulator" type="dual_robot_sim.py" output="screen" />
+</launch>
